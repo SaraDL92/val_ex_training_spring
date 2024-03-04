@@ -12,9 +12,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Table(name="user")
 public class UserEntity {
@@ -43,4 +46,13 @@ public class UserEntity {
 	private LocalDateTime lastAccessData;
 	@Column(nullable=false, columnDefinition = "BIT(1) DEFAULT b'0'")
 	private Boolean cancellation;
+	public UserEntity(String email, String password) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.creationDate = LocalDateTime.now();
+	}
+	
+	
+	
 }
