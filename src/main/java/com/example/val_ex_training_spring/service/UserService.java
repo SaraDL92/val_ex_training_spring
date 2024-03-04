@@ -41,6 +41,8 @@ public class UserService {
 		userRepo.delete(found);
 	}
 
-
+	public UserEntity findByEmail(String email) {
+		return userRepo.findByEmail(email);
+	}
 
 }
