@@ -13,25 +13,33 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
-@Table(name="paragraphs")
+@Table(name = "paragraphs")
 public class ParagraphEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idparagraphs;
-	
-	@Column(nullable=false)
+
+	@Column(nullable = false)
 	private String title;
-	@Column(nullable=false)
+	@Column(nullable = false)
 	private String description;
-	 @ManyToOne
-	 @JoinColumn(name = "id_greenSection", referencedColumnName = "idGreenSection")
+	@ManyToOne
+	@JoinColumn(name = "id_greenSection", referencedColumnName = "idGreenSection")
 	private GreenSectionEntity idGreenSection;
-	@OneToMany(mappedBy="idParagraphs")
-	private List <RatingEntity>ratingList=new ArrayList<>();
-	
+	@OneToMany(mappedBy = "idParagraphs")
+	private List<RatingEntity> ratingList = new ArrayList<>();
+
+	@Override
+	public String toString() {
+		return "ParagraphEntity [idparagraphs=" + idparagraphs + ", title=" + title + ", description=" + description
+				+ ", idGreenSection=" + idGreenSection + " + ]";
+	}
 }

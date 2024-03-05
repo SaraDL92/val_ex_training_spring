@@ -17,22 +17,28 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Entity
-@Data
-
+@Getter
+@Setter
 @NoArgsConstructor
-@Table(name="green_section")
-	public class GreenSectionEntity {
+@Table(name = "green_section")
+public class GreenSectionEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
-		private Long idGreenSection;
-		@Column(nullable=false)
-		private String title;
-		@ManyToOne
-		@JoinColumn(name = "id_User", referencedColumnName = "idUser")
-		private UserEntity idUser;
-		@OneToMany(mappedBy="idGreenSection")
-		private List <ParagraphEntity>paragraphList=new ArrayList<>();
+
+	private Long idGreenSection;
+	@Column(nullable = false)
+	private String title;
+	@ManyToOne
+	@JoinColumn(name = "id_User", referencedColumnName = "idUser")
+	private UserEntity idUser;
+	@OneToMany(mappedBy = "idGreenSection")
+	private List<ParagraphEntity> paragraphList = new ArrayList<>();
+
+	@Override
+	public String toString() {
+		return "GreenSectionEntity [idGreenSection=" + idGreenSection + ", title=" + title + ", idUser=" + idUser.getIdUser()
+				+ "]";
+	}
+
 }

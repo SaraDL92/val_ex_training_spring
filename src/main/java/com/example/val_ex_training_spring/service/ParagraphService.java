@@ -49,7 +49,7 @@ public class ParagraphService {
 		}
 	}
 	
-	public boolean updateParagraph(ParagraphEntity paragraph) {
-		return paragraphRepository.updateParagraph(paragraph.getIdparagraphs(), paragraph.getTitle(), paragraph.getDescription(), paragraph.getIdGreenSection().getIdGreenSection());
-	}
+//	public boolean updateParagraph(ParagraphEntity paragraph) {
+//		return paragraphRepository.updateParagraph(paragraph.getIdparagraphs(), paragraph.getTitle(), paragraph.getDescription(), paragraph.getIdGreenSection().getIdGreenSection());
+//	}
 }

@@ -40,6 +40,15 @@ public class DataUserEntity {
 		this.value = value;
 		this.idUser = idUser;
 	}
+
+
+	@Override
+	public String toString() {
+		return "DataUserEntity [idDataUser=" + idDataUser + ", description=" + description + ", value=" + value
+				+ ", idUser=" + idUser.getIdUser() + "]";
+	}
+	
+	
 	
 	
 }
