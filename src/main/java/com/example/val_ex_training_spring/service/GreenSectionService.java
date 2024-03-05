@@ -1,8 +1,10 @@
 package com.example.val_ex_training_spring.service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
@@ -17,6 +19,10 @@ import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import model.bean.GreenSectionBean;
+import model.dao.GreenSectionDao;
+import model.dto.GreenSectionDTO;
+import utils.converter.GreenSectionConverter;
 
 @Service
 public class GreenSectionService {
@@ -29,9 +35,7 @@ public GreenSectionService(GreenSectionRepository greensectionrepo)
 	
 }
 
-//public List<GreenSectionEntity > listGreenSectionsByUserId(){
-//	
-//}
+
 public GreenSectionEntity saveEntity(GreenSectionEntity gse) 
 {
 	GreenSectionEntity savedGS=	greenSectionRepo.save(gse);
@@ -69,11 +73,18 @@ if(issaved!= null) {
 return true;}
 else{return false;}
 
+}
 
+public Set<GreenSectionEntity> searchGreenSection(Long id, String name) {
+
+	Set<GreenSectionEntity> listGs = new HashSet<>();
 	
-	 
 	
-	 
+	
+
+	listGs = greenSectionRepo.findByName(id, name);
+	
+	return listGs;
 }
 
 
