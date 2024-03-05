@@ -19,10 +19,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import model.bean.GreenSectionBean;
-import model.dao.GreenSectionDao;
-import model.dto.GreenSectionDTO;
-import utils.converter.GreenSectionConverter;
+
 
 @Service
 public class GreenSectionService {

@@ -56,11 +56,6 @@ public class DataUserEntity {
 	}
 
 
-	@Override
-	public String toString() {
-		return "DataUserEntity [idDataUser=" + idDataUser + ", description=" + description + ", value=" + value
-				+ ", idUser=" + idUser + "]";
-	}
 	
 	
 }
