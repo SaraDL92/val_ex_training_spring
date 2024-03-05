@@ -20,66 +20,62 @@ import jakarta.persistence.OneToMany;
 
 @Service
 public class GreenSectionService {
-private final GreenSectionRepository greenSectionRepo;
+	private final GreenSectionRepository greenSectionRepo;
 
-@Autowired
-public GreenSectionService(GreenSectionRepository greensectionrepo) 
-{
-	this.greenSectionRepo=greensectionrepo;
-	
-}
-public boolean saveEntity(GreenSectionEntity gse) 
-{
-	GreenSectionEntity savedGS=	greenSectionRepo.save(gse);
-	Long id=savedGS.getIdGreenSection();
-	Optional<GreenSectionEntity> greensectionfounded=greenSectionRepo.findById(id);
-	List<GreenSectionEntity>greensectionlist=greenSectionRepo.findAll();
-	if(greensectionlist.contains(greensectionfounded)) {
-		
-	return true;}
-	return false;
-	
-
-	
-}
-public GreenSectionEntity findGreenSectionById(Long id) throws NotFoundException
-{GreenSectionEntity gs=greenSectionRepo.findById(id).orElseThrow(() -> new NotFoundException());
-
-return gs;
+	@Autowired
+	public GreenSectionService(GreenSectionRepository greensectionrepo) {
+		this.greenSectionRepo = greensectionrepo;
 
 	}
-public List <GreenSectionEntity> findAllGreenSection()
-{
-	List<GreenSectionEntity>greensectlist=greenSectionRepo.findAll();
-	return greensectlist;
-}
 
-public boolean deleteGreenSection(GreenSectionEntity gs) {
-	greenSectionRepo.delete(gs);
-	Long id=gs.getIdGreenSection();
-	List <GreenSectionEntity>lista=greenSectionRepo.findAll();
-	if(lista.contains(id)) {
+	public boolean saveEntity(GreenSectionEntity gse) {
+		GreenSectionEntity savedGS = greenSectionRepo.save(gse);
+		Long id = savedGS.getIdGreenSection();
+		Optional<GreenSectionEntity> greensectionfounded = greenSectionRepo.findById(id);
+		List<GreenSectionEntity> greensectionlist = greenSectionRepo.findAll();
+		if (greensectionlist.contains(greensectionfounded)) {
+
+			return true;
+		}
 		return false;
-	}return true;
-}
 
-public boolean updateGreenSection(Long idGreenSection,String title,UserEntity idUser)  throws NotFoundException
-{
-GreenSectionEntity gs=this.findGreenSectionById(idGreenSection);
-if(greenSectionRepo.findAll().contains(gs)) {
-gs.setIdUser(idUser);
-gs.setTitle(title);}
+	}
 
-GreenSectionEntity gssaved=greenSectionRepo.save(gs);
-if(gssaved!=null) {return true;}return false;
+	public GreenSectionEntity findGreenSectionById(Long id) throws NotFoundException {
+		GreenSectionEntity gs = greenSectionRepo.findById(id).orElseThrow(() -> new NotFoundException());
 
+		return gs;
 
-	
-	 
-	
-	 
-}
+	}
 
+	public List<GreenSectionEntity> findAllGreenSection() {
+		List<GreenSectionEntity> greensectlist = greenSectionRepo.findAll();
+		return greensectlist;
+	}
 
+	public boolean deleteGreenSection(GreenSectionEntity gs) {
+		greenSectionRepo.delete(gs);
+		Long id = gs.getIdGreenSection();
+		List<GreenSectionEntity> lista = greenSectionRepo.findAll();
+		if (lista.contains(id)) {
+			return false;
+		}
+		return true;
+	}
+
+	public boolean updateGreenSection(Long idGreenSection, String title, UserEntity idUser) throws NotFoundException {
+		GreenSectionEntity gs = this.findGreenSectionById(idGreenSection);
+		if (greenSectionRepo.findAll().contains(gs)) {
+			gs.setIdUser(idUser);
+			gs.setTitle(title);
+		}
+
+		GreenSectionEntity gssaved = greenSectionRepo.save(gs);
+		if (gssaved != null) {
+			return true;
+		}
+		return false;
+
+	}
 
 }
