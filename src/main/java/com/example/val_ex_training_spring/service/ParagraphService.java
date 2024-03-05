@@ -2,11 +2,10 @@ package com.example.val_ex_training_spring.service;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.OptimisticLockingFailureException;
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
-
 import com.example.val_ex_training_spring.entity.ParagraphEntity;
 import com.example.val_ex_training_spring.repository.ParagraphRepository;
 
@@ -15,30 +14,22 @@ public class ParagraphService {
 
 	@Autowired
 	ParagraphRepository paragraphRepository;
-	
 	@Autowired
-	public ParagraphService(ParagraphRepository paragraphRepository) {
-		this.paragraphRepository = paragraphRepository;
-	}
+	GreenSectionService greenSectionService;
 	
 	public List<ParagraphEntity> searchAllParagraph(){
 		return paragraphRepository.findAll();
 	}
 	
-	public boolean saveParagraph(ParagraphEntity paragraph) {
-		if(paragraphRepository.save(paragraph)!=null)
-			return true;
-		return false;
+	public ParagraphEntity searchParagraphById(Long idParagraph) {
+		return paragraphRepository.findById(idParagraph).get();
 	}
 	
-	public Optional<ParagraphEntity> searchParagraphById(Long idParagraph) {
-		return paragraphRepository.findById(idParagraph);
+	public ParagraphEntity saveParagraph(ParagraphEntity paragraph) {
+		ParagraphEntity newParagraph = new ParagraphEntity(paragraph.getTitle(), paragraph.getDescription(), paragraph.getIdGreenSection());
+		return paragraphRepository.save(newParagraph);
 	}
-	
-	public List<ParagraphEntity> searchAllParagraphsd() {
-		return paragraphRepository.findAll();
-	}
-	
+		
 	public void deleteParagraph(ParagraphEntity paragraph) {
 		try{
 			paragraphRepository.delete(paragraph);
@@ -49,7 +40,9 @@ public class ParagraphService {
 		}
 	}
 	
-//	public boolean updateParagraph(ParagraphEntity paragraph) {
-//		return paragraphRepository.updateParagraph(paragraph.getIdparagraphs(), paragraph.getTitle(), paragraph.getDescription(), paragraph.getIdGreenSection().getIdGreenSection());
-//	}
+	public boolean updateParagraph(String title, String description, Long idGreenSection, Long idParagraph) throws NotFoundException {
+		if(paragraphRepository.updateParagraph(title, description, greenSectionService.findGreenSectionById(idGreenSection), idParagraph)==1)
+			return true;
+		return false;
+	}
 }

@@ -35,7 +35,7 @@ public class DataUserEntity {
 	private UserEntity idUser;
 	
 	
-	public DataUserEntity(String description, String value, UserEntity idUser) {
+	public DataUserEntity(String description, UserEntity idUser, String value) {
 		this.description = description;
 		this.value = value;
 		this.idUser = idUser;
@@ -49,6 +49,18 @@ public class DataUserEntity {
 	}
 	
 	
+	
+	public DataUserEntity(String description, String value) {
+		this.description = description;
+		this.value = value;
+	}
+
+
+	@Override
+	public String toString() {
+		return "DataUserEntity [idDataUser=" + idDataUser + ", description=" + description + ", value=" + value
+				+ ", idUser=" + idUser + "]";
+	}
 	
 	
 }

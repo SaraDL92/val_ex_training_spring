@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
+@Data
 @Getter
 @Setter
 @NoArgsConstructor
@@ -33,9 +34,4 @@ public class RoleEntity {
 	private UserEntity idFirstUser;
 	
 	
-	@Override
-	public String toString() {
-		return "RoleEntity [idRole=" + idRole + ", name=" + name + ", description=" + description + ", idFirstUser="
-				+ idFirstUser.getIdUser() + "]";
-	}
 }
