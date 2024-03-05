@@ -36,7 +36,7 @@ public class DataUserService {
 		return dataRepo.save(found);
 	}
 
-	public void DataUserEntity(Long id) throws NotFoundException {
+	public void deleteDataUser(Long id) throws NotFoundException {
 		DataUserEntity found = this.findByIdDataUser(id);
 		dataRepo.delete(found);
 	}
