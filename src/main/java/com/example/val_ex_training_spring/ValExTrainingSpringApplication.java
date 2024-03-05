@@ -1,3 +1,4 @@
+
 package com.example.val_ex_training_spring;
 
 import java.util.List;
@@ -52,6 +53,35 @@ public class ValExTrainingSpringApplication {
 	    	
 //	    	UserEntity uE = new UserEntity("hup@hup.it", "12345");
 //	    	uService.findByIdAndUpdate(2L, uE);
+	    	
+//	    	UserEntity uE = new UserEntity("zorr013434@h1.it", "12345");
+//	    	
+//	    	UserEntity u = uService.saveUser(uE);
+//	    	DataUserEntity uE1 = new DataUserEntity("Nome", "Marcolino");
+//	    	    dService.findByIdAndUpdate(14L, uE1);
+//	        
+	       
+//	    	List<DataUserEntity> d = dService.getDataUser();
+//	    	  for(DataUserEntity l: d) {
+//	  	        System.out.println("Lista" + l.toString());
+//	  	      }
+	    	  
+//	    	System.out.println(dService.findAllDataById(14L));
+//	    	
+//	    	System.out.println(dService.findByIdUser(34L));
+//	    	  System.out.println("Ciao");
+	    	
+//	    	System.out.println(dService.findByName("M"));
+	    	
+//	    	List<Object[]> d = dService.getEmailAndFullName();
+//	    	  for(Object[] l: d) {
+//	  	        System.out.println("Lista" + l.toString());
+//	  	      }
+	    	
+	    	List<DataUserEntity> d = dService.findByUserId(32L);
+	    	  for(DataUserEntity l: d) {
+	  	        System.out.println("Lista" + l.toString());
+	  	      }
 	    }
 	    
 	   

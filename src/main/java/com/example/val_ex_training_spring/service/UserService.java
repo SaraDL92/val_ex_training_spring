@@ -18,7 +18,8 @@ public class UserService {
 	
 	public UserEntity saveUser(UserEntity uEntity) {
 		UserEntity newDataUser = new UserEntity(uEntity.getEmail(), uEntity.getPassword());
-		return userRepo.save(newDataUser);
+		 UserEntity uE = userRepo.save(newDataUser);
+		return uE;
 	}
 
 	public List<UserEntity> getUsers() {
@@ -31,9 +32,13 @@ public class UserService {
 
 	public UserEntity findByIdAndUpdate(Long id, UserEntity body) throws NotFoundException {
 		UserEntity found = this.findByIdUser(id);
+		if(found != null) {
 		found.setEmail(body.getEmail());
 		found.setPassword(body.getPassword());
 		return userRepo.save(found);
+		} else {
+			return null;
+		}
 	}
 
 	public void findByIdAndDelete(Long id) throws NotFoundException {
