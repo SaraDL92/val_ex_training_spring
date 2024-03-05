@@ -8,6 +8,7 @@ import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.example.val_ex_training_spring.entity.DataUserEntity;
+import com.example.val_ex_training_spring.entity.UserEntity;
 import com.example.val_ex_training_spring.repository.DataUserRepository;
 
 @Service
@@ -24,7 +25,19 @@ public class DataUserService {
 		return dataRepo.findAll();
 	}
 
-	public Optional<DataUserEntity> findByIdDataUser(Long id) throws NotFoundException {
-		return dataRepo.findById(id);
+	public DataUserEntity findByIdDataUser(Long id) throws NotFoundException {
+		return dataRepo.findById(id).orElseThrow(() -> new NotFoundException());
+	}
+	
+	public DataUserEntity findByIdAndUpdate(Long id, DataUserEntity body) throws NotFoundException {
+		DataUserEntity found = this.findByIdDataUser(id);
+		found.setDescription(body.getDescription());
+		found.setValue(body.getValue());
+		return dataRepo.save(found);
+	}
+
+	public void DataUserEntity(Long id) throws NotFoundException {
+		DataUserEntity found = this.findByIdDataUser(id);
+		dataRepo.delete(found);
 	}
 }
