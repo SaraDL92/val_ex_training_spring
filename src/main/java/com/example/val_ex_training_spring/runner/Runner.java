@@ -40,11 +40,11 @@ public class Runner implements ApplicationRunner {
 //		paragraph.setDescription("Descrizione sostitutiva");
 //		paragraph.setIdGreenSection(greenSectionService.findGreenSectionById(4L));
 		
-		GreenSectionEntity greenSection = greenSectionService.findGreenSectionById(1L);
+		//GreenSectionEntity greenSection = greenSectionService.findGreenSectionById(4L);
 //		
 //		ParagraphEntity paragraph = new ParagraphEntity("Titolo modificato","Descrizione modificata 33", greenSection);
 //		System.out.println(paragraphService.updateParagraph(3L, paragraph));
 
-		System.out.println(paragraphService.searchParagraphByIdGreenSection(greenSection));
+		//System.out.println(paragraphService.searchParagraphByIdGreenSection(greenSection));
 	}
 }

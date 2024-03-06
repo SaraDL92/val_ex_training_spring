@@ -40,8 +40,9 @@ public class ParagraphService {
 		return paragraphRepository.save(newParagraph);
 	}
 		
-	public void deleteParagraph(ParagraphEntity paragraph) {
+	public void deleteParagraph(Long idParagraph) {
 		try{
+			ParagraphEntity paragraph = searchParagraphById(idParagraph);
 			paragraphRepository.delete(paragraph);
 		}catch(IllegalArgumentException e) {
 			System.out.println("Paragraph in input is null:"+e);
@@ -51,7 +52,7 @@ public class ParagraphService {
 	}
 	
 	public ParagraphEntity updateParagraph(Long idParagraph, ParagraphEntity paragraph) {
-		ParagraphEntity paragraphUpdated = this.searchParagraphById(idParagraph);
+		ParagraphEntity paragraphUpdated = searchParagraphById(idParagraph);
 		if(paragraphUpdated!=null ) {
 			paragraphUpdated.setTitle(paragraph.getTitle());
 			paragraphUpdated.setDescription(paragraph.getDescription());
