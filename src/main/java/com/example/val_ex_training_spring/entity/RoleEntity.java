@@ -10,10 +10,14 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Table(name="roles")
 public class RoleEntity {
@@ -31,4 +35,6 @@ public class RoleEntity {
 	//e referencedColumnName la colonna dell'id della tabella di riferimento
 	@JoinColumn(name = "id_firstuser", referencedColumnName = "idUser")
 	private UserEntity idFirstUser;
+	
+	
 }

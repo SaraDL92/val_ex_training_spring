@@ -5,6 +5,7 @@ import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -12,6 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,7 +22,7 @@ import lombok.Setter;
 
 @Entity
 @Data
-
+@AllArgsConstructor
 @NoArgsConstructor
 @Table(name="green_section")
 	public class GreenSectionEntity {
@@ -33,6 +35,11 @@ import lombok.Setter;
 		@ManyToOne
 		@JoinColumn(name = "id_User", referencedColumnName = "idUser")
 		private UserEntity idUser;
-		@OneToMany(mappedBy="idGreenSection")
-		private List <ParagraphEntity>paragraphList=new ArrayList<>();
+		@OneToMany(mappedBy="idGreenSection", fetch = FetchType.EAGER)//quando si recupera un'entità, anche gli oggetti associati vengono recuperati e caricati simultaneamente.
+		private List<ParagraphEntity> paragraphList=new ArrayList<>();
+		
+		public GreenSectionEntity(String title1,UserEntity user)
+		{this.title=title1;
+		idUser=user;
+		}
 }
