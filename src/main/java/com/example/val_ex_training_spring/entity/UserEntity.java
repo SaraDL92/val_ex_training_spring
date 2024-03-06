@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,6 +36,7 @@ public class UserEntity {
 	private List <RatingEntity> ratingList=new ArrayList<>();
 	@OneToMany(mappedBy="idUser")
 	private List<GreenSectionEntity> greenSectionList=new ArrayList<>();
+	@JsonIgnore
 	@OneToMany(mappedBy="idUser")
 	private List <DataUserEntity> dataUserList=new ArrayList<>();
 	@Column(nullable=false,unique=true)

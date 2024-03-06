@@ -78,10 +78,10 @@ public class ValExTrainingSpringApplication {
 //	  	        System.out.println("Lista" + l.toString());
 //	  	      }
 	    	
-	    	List<DataUserEntity> d = dService.findByUserId(32L);
-	    	  for(DataUserEntity l: d) {
-	  	        System.out.println("Lista" + l.toString());
-	  	      }
+//	    	List<DataUserEntity> d = dService.findByUserId(32L);
+//	    	  for(DataUserEntity l: d) {
+//	  	        System.out.println("Lista" + l.toString());
+//	  	      }
 	    }
 	    
 	   
