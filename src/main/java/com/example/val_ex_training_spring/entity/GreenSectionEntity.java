@@ -35,7 +35,7 @@ import lombok.Setter;
 		@ManyToOne
 		@JoinColumn(name = "id_User", referencedColumnName = "idUser")
 		private UserEntity idUser;
-		@OneToMany(mappedBy="idGreenSection", fetch = FetchType.EAGER)
+		@OneToMany(mappedBy="idGreenSection", fetch = FetchType.EAGER)//quando si recupera un'entità, anche gli oggetti associati vengono recuperati e caricati simultaneamente.
 		private List<ParagraphEntity> paragraphList=new ArrayList<>();
 		
 		public GreenSectionEntity(String title1,UserEntity user)
