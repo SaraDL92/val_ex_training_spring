@@ -60,7 +60,7 @@ public class UserEntity {
 
 	@Override
 	public String toString() {
-		return "UserEntity [idUser=" + idUser + ", dataUserList=" + dataUserList + ", email=" + email
+		return "UserEntity [idUser=" + idUser + " email=" + email
 				+ ", password=" + password + ", creationDate=" + creationDate + ", lastModifiedData=" + lastModifiedData
 				+ ", lastAccessData=" + lastAccessData + ", cancellation=" + cancellation + "]";
 	}
