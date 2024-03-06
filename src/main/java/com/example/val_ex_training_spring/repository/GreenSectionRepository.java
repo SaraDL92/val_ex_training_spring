@@ -20,10 +20,10 @@ import com.example.val_ex_training_spring.entity.GreenSectionEntity;
 
 @Repository
 public interface GreenSectionRepository extends JpaRepository<GreenSectionEntity,Long> {
-	@Query("SELECT * FROM green_section WHERE id_user=:id AND title LIKE %:name%")
+	@Query("SELECT d FROM GreenSectionEntity d WHERE d.idUser=:id AND d.title LIKE %:name%")
 	public Set<GreenSectionEntity> findByName(Long id, String name) ;
 	
-	@Query("SELECT * FROM green_section WHERE id_user=:id")
+	@Query("SELECT d FROM GreenSectionEntity d WHERE d.idUser=:id")
 	public List<GreenSectionEntity> findByIdUser(Long id) ;
     
 

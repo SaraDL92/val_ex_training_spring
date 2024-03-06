@@ -3,6 +3,8 @@ package com.example.val_ex_training_spring.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,9 +33,11 @@ import lombok.Setter;
 		private Long idGreenSection;
 		@Column(nullable=false)
 		private String title;
+		@JsonIgnore
 		@ManyToOne
 		@JoinColumn(name = "id_User", referencedColumnName = "idUser")
 		private UserEntity idUser;
+		@JsonIgnore
 		@OneToMany(mappedBy="idGreenSection")
 		private List <ParagraphEntity>paragraphList=new ArrayList<>();
 		
