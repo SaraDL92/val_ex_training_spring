@@ -1,4 +1,6 @@
 package com.example.val_ex_training_spring.entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,6 +24,7 @@ public class RoleEntity {
 	private String name;
 	@Column(nullable=false, columnDefinition = "VARCHAR(255) DEFAULT 'Valutato'")
 	private String description;
+	@JsonIgnore
 	@ManyToOne
 	//Per rinominare la colonna della FK mettere questa notation 
 	//in cui name sta per nome effettivo che vuoi dare alla colonna
